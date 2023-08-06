@@ -45,7 +45,7 @@ func main() {
 
 		var newName string
 		for _, part := range splitName {
-			newName += strings.ToUpper(string(part[0])) + string(part[1:]) + "Solid"
+			newName += strings.ToUpper(string(part[0])) + string(part[1:])
 		}
 
 		fullFileDir := fmt.Sprintf("%s/%s", twentyFourPathSolid, file.Name())
@@ -56,7 +56,7 @@ func main() {
 		}
 
 		iconsData = append(iconsData, IconData{
-			Name: newName,
+			Name: newName + "Solid",
 			Svg:  string(bt),
 		})
 	}
@@ -73,7 +73,7 @@ func main() {
 			newName += strings.ToUpper(string(part[0])) + string(part[1:]) + "Outline"
 		}
 
-		fullFileDir := fmt.Sprintf("%s/%s", twentyFourPathSolid, file.Name())
+		fullFileDir := fmt.Sprintf("%s/%s", twentyFourPathOutline, file.Name())
 
 		bt, err := os.ReadFile(fullFileDir)
 		if err != nil {
@@ -81,7 +81,7 @@ func main() {
 		}
 
 		iconsData = append(iconsData, IconData{
-			Name: newName,
+			Name: newName + "Outline",
 			Svg:  string(bt),
 		})
 	}
