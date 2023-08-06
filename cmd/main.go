@@ -22,8 +22,14 @@ func main() {
 
 	// twentyPath := path.Join("optimized", "20")
 	twentyFourPathSolid := path.Join("optimized", "24", "solid")
+	twentyFourPathOutline := path.Join("optimized", "24", "outline")
 
 	twentyFourDirSolid, err := os.ReadDir(twentyFourPathSolid)
+	if err != nil {
+		panic(err)
+	}
+
+	twentyFourDirOutline, err := os.ReadDir(twentyFourPathOutline)
 	if err != nil {
 		panic(err)
 	}
@@ -39,7 +45,32 @@ func main() {
 
 		var newName string
 		for _, part := range splitName {
-			newName += strings.ToUpper(string(part[0])) + string(part[1:])
+			newName += strings.ToUpper(string(part[0])) + string(part[1:]) + "Solid"
+		}
+
+		fullFileDir := fmt.Sprintf("%s/%s", twentyFourPathSolid, file.Name())
+
+		bt, err := os.ReadFile(fullFileDir)
+		if err != nil {
+			panic(err)
+		}
+
+		iconsData = append(iconsData, IconData{
+			Name: newName,
+			Svg:  string(bt),
+		})
+	}
+
+	for _, file := range twentyFourDirOutline {
+		if file.IsDir() {
+			continue
+		}
+
+		splitName := strings.Split(strings.TrimSuffix(file.Name(), ".svg"), "-")
+
+		var newName string
+		for _, part := range splitName {
+			newName += strings.ToUpper(string(part[0])) + string(part[1:]) + "Outline"
 		}
 
 		fullFileDir := fmt.Sprintf("%s/%s", twentyFourPathSolid, file.Name())

@@ -22,11 +22,11 @@ type Navigation struct {
 
 var (
 	Nav = []Navigation{{
-		Icon: heroicons.Home,
+		Icon: heroicons.HomeSolid,
 		Name: "Home",
 		Link: "/",
 	}, {
-		Icon: heroicons.User,
+		Icon: heroicons.UserSolid,
 		Name: "Profile",
 		Link: "/profile",
 	}}
