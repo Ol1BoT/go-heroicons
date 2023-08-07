@@ -70,7 +70,7 @@ func main() {
 
 		var newName string
 		for _, part := range splitName {
-			newName += strings.ToUpper(string(part[0])) + string(part[1:]) + "Outline"
+			newName += strings.ToUpper(string(part[0])) + string(part[1:])
 		}
 
 		fullFileDir := fmt.Sprintf("%s/%s", twentyFourPathOutline, file.Name())
